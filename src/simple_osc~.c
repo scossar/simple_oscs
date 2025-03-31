@@ -1,4 +1,10 @@
 // reference: pd_cyclone_triangle_external.md (line: ~1020)
+// for ideas about converting this to a wave folding oscillator, see
+// pure_data_wave_folding_oscillator.md
+//
+// for a general overview of the code, (mostly mine with some confirmation from
+// Claude), see `understanding_pure_data_wave_table_oscillator.md`
+
 #include "m_pd.h"
 #include <math.h>
 
@@ -58,9 +64,6 @@ static t_int *simple_osc_perform(t_int *w)
 
   while (n--) {
     t_float freq = *in++;
-    // using the bitwise & operator for modulo wrapping
-    // it's effectively taking the modulo of 16384 with respect to dphase
-    // to get the index
     int index = ((int)dphase) & (WAVETABLE_SIZE-1);
     t_float frac = dphase - index;
 
