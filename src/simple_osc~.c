@@ -69,7 +69,6 @@ static t_int *simple_osc_perform(t_int *w)
 
     // linear interpolation between table points
     *out++ = cos_table[index] + frac * (cos_table[index + 1] - cos_table[index]);
-    // *out++ = cos_table[index];
 
     // advance phase based on frequency
     dphase += freq * conv;

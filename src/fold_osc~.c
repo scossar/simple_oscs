@@ -68,7 +68,6 @@ static t_int *fold_osc_perform(t_int *w)
 
   double dphase = x->x_phase;
   double conv = x->x_conv;
-  // t_float threshold = x->x_threshold;
 
   if (!cos_table) return (w+5);
 
