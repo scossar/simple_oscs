@@ -218,7 +218,7 @@ static void *tri_phase_new(t_floatarg f)
   // folding softness
   x->in_4 = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("softness"));
 
-  x->in_4 = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("ft1"));
+  x->in_5 = inlet_new(&x->x_obj, &x->x_obj.ob_pd, &s_float, gensym("ft1"));
 
   outlet_new(&x->x_obj, gensym("signal"));
 
