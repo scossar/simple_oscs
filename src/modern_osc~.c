@@ -3,7 +3,8 @@
 #include "m_pd.h"
 #include <math.h>
 
-#define WAVETABLE_SIZE 16384 // 2^14
+// #define WAVETABLE_SIZE 16384 // 2^14
+#define WAVETABLE_SIZE 4096 // 2^12 might be good enough
 
 static t_class *modern_osc_class = NULL;
 static float *cos_table = NULL; // shared wavetable
