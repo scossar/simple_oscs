@@ -50,11 +50,13 @@ static void wavetable_free(void)
   }
 }
 
+// TODO: `in` and `out` should have type `t_sample`, not `t_float`
+// `t_sample *in = (t_float *)(w[2]);`
 static t_int *simple_osc_perform(t_int *w)
 {
   t_simple_osc *x = (t_simple_osc *)(w[1]);
-  t_float *in = (t_float *)(w[2]);
-  t_float *out = (t_float *)(w[3]);
+  t_float *in = (t_float *)(w[2]); // fix the type
+  t_float *out = (t_float *)(w[3]); // fix the type
   int n = (int)(w[4]);
 
   double dphase = x->x_phase;
@@ -63,7 +65,7 @@ static t_int *simple_osc_perform(t_int *w)
   if (!cos_table) return (w+5);
 
   while (n--) {
-    t_float freq = *in++;
+    t_float freq = *in++; // should be t_sample
     int index = ((int)dphase) & (WAVETABLE_SIZE-1);
     t_float frac = dphase - index;
 
@@ -72,6 +74,7 @@ static t_int *simple_osc_perform(t_int *w)
 
     // advance phase based on frequency
     dphase += freq * conv;
+    // fairly sure this can be done outside of the while loop
     while (dphase >= WAVETABLE_SIZE) dphase -= WAVETABLE_SIZE;
     while (dphase <0) dphase += WAVETABLE_SIZE;
   }

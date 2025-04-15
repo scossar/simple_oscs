@@ -1,6 +1,9 @@
 #include "m_pd.h"
 #include <math.h>
 
+// NOTE: look at pure-data/src/d_osc.h to see how pure-data does this. It's
+// different than the implementation below
+
 // #define WAVETABLE_SIZE 16384
 #define WAVETABLE_SIZE 65536
 
